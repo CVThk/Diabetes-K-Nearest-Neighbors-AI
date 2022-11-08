@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Dataset";
+    Layout = "~/Views/Shared/_LayoutPageHF.cshtml";
+}
+
+<div class="w-75 ms-auto me-auto mt-5 text-center">
+    <h2 style="text-transform:uppercase; color:var(--primary)">Dữ liệu thu thập</h2>
+    <table class="table text-center">
+        <tr>
+            <th>
+                Pregnancies
+            </th>
+            <th>
+                Glucose
+            </th>
+            <th>
+                BloodPressure
+            </th>
+            <th>
+                SkinThickness
+            </th>
+            <th>
+                Insulin
+            </th>
+            <th>
+                BMI
+            </th>
+            <th>
+                DiabetesPedigreeFunction
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Outcome
+            </th>
+        </tr>
+        @Html.Raw(ViewBag.Diabetes)
+
+    </table>
+</div>
+
