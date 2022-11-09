@@ -2,9 +2,39 @@
 @{
     ViewBag.Title = "Dataset";
     Layout = "~/Views/Shared/_LayoutPageHF.cshtml";
+    <script src='https://cdn.plot.ly/plotly-2.16.1.min.js'></script>
 }
 
-<div class="w-75 ms-auto me-auto mt-5 text-center">
+<div class="w-75 ms-auto me-auto text-center" style="overflow-x:scroll">
+    <div class="w-75 ms-auto me-auto text-center">
+        <h2 style="text-transform:uppercase; color:var(--primary)">Đồ thị dữ liệu thu thập</h2>
+        <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+        <script>
+            var trace1 = {
+                x: ['Không bị'],
+                y: @ViewBag.CountPos,
+                name: 'Không bị',
+                type: 'bar',
+                text: (@ViewBag.CountPos).map(String)
+            };
+
+            var trace2 = {
+                x: ['Bị'],
+                y: @ViewBag.CountNe,
+                name: 'Bị',
+                type: 'bar',
+                text: (@ViewBag.CountNe).map(String)
+            };
+
+
+            var data = [trace1, trace2];
+
+            var layout = { barmode: 'group' };
+
+            Plotly.newPlot('myDiv', data, layout);
+
+        </script>
+    </div>
     <h2 style="text-transform:uppercase; color:var(--primary)">Dữ liệu thu thập</h2>
     <table class="table text-center">
         <tr>

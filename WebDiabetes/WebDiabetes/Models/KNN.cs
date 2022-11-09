@@ -9,6 +9,7 @@ namespace WebDiabetes.Models
     {
         private List<KNN_item> DataList { get; set; }
         private List<double> Label { get; set; }
+        private KNN_item Test { get; set; }
 
         private double Min_In_Col(List<KNN_item> dataList, int col)
         {
@@ -44,7 +45,7 @@ namespace WebDiabetes.Models
                 {
                     item.Attributes[j] = (double)(item.Attributes[j] - min) / (max - min);
                 }
-                //data.Attributes[j] = (double)(data.Attributes[j] - min) / (max - min);
+                //Test.Attributes[j] = (double)(Test.Attributes[j] - min) / (max - min);
             }
         }
 
@@ -57,21 +58,24 @@ namespace WebDiabetes.Models
                 if (!Label.Contains(item.Val))
                     Label.Add(item.Val);
             }
+            Scale_Fit_Transform();
         }
 
-        private double distance(KNN_item a, KNN_item b, int col_start, int col_end)
+        private double distance(KNN_item a, KNN_item b)
         {
             double d = 0;
-            for (int j = col_start; j <= col_end; j++)
+            int col = a.Attributes.Count;
+            for (int j = 0; j < col; j++)
                 d += Math.Pow(a.Attributes[j] - b.Attributes[j], 2);
             return Math.Sqrt(d);
         }
 
-        public double Predict(KNN_item data, int col_start, int col_end, int k)
+        public double Predict(KNN_item dataTest, int k)
         {
+            Test = dataTest;
             foreach (var item in DataList)
             {
-                item.Distance = distance(item, data, col_start, col_end);
+                item.Distance = distance(item, Test);
             }
             DataList.Sort((x, y) => x.Distance.CompareTo(y.Distance));
             
@@ -153,5 +157,71 @@ namespace WebDiabetes.Models
             }
             return max;
         }
+
+        public void ConfusionMatrix(out int TruePositive, out int TrueNegative, out int FalsePositive, out int FalseNegative, int k)
+        {
+            TruePositive = TrueNegative = FalseNegative = FalsePositive = 0;
+            foreach (var item in DataList)
+            {
+                int label_item = (int)Predict(item, k);
+                if (item.Val == 1 && label_item == 1)
+                    TruePositive++;
+                else if (item.Val == 0 && label_item == 0)
+                    TrueNegative++;
+                else if (item.Val == 1 && label_item == 0)
+                    FalseNegative++;
+                else if (item.Val == 0 && label_item == 1)
+                    FalsePositive++;
+                
+            }
+        }
+
+        public void Accuracy(out double Precision, out double Recall, int k)
+        {
+            int TruePositive, TrueNegative, FalseNegative, FalsePositive;
+            ConfusionMatrix(out TruePositive, out TrueNegative, out FalsePositive, out FalseNegative, k);
+            Precision = (double)TruePositive / (TruePositive + FalsePositive);
+            Recall = (double)TruePositive / (TruePositive + FalseNegative);
+        }
+
+        public int K()
+        {
+            int k = 9;
+            double Precision, Recall;
+            Accuracy(out Precision, out Recall, k);
+            for(int i = k; i < 100; i += 2)
+            {
+                double tam_p, tam_r;
+                Accuracy(out tam_p, out tam_r, i);
+                if(tam_r > Recall)
+                {
+                    Recall = tam_r;
+                    k = i;
+                }    
+            }    
+
+            return k;
+        }
+
+        public void GraphString(out string avg, out string max)
+        {
+            KNN_item _avg = Average();
+            KNN_item _max = Max();
+            avg = max = @"[";
+            int count_col = DataList.First().Attributes.Count;
+            for (int i = 0; i < count_col; i++)
+            {
+                if (i > 0)
+                {
+                    avg += ',';
+                    max += ',';
+                }
+                avg += _avg.Attributes[i].ToString().Replace(',', '.');
+                max += _max.Attributes[i].ToString().Replace(',', '.');
+            }
+            avg += "]";
+            max += "]";
+        }
+
     }
 }
