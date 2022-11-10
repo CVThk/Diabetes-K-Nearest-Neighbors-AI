@@ -280,8 +280,8 @@ C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao
 C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\bin\System.Web.Helpers.xml
 C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\bin\System.Web.Mvc.xml
 C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\obj\Debug\WebDiabetes.csproj.AssemblyReference.cache
 C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\obj\Debug\WebDiabetes.csproj.CoreCompileInputs.cache
 C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\obj\Debug\WebDiabetes.csproj.CopyComplete
 C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\obj\Debug\WebDiabetes.dll
 C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\obj\Debug\WebDiabetes.pdb
+C:\Users\HP\Documents\Workspace\UpOnedrive\Nam_Ba\HK1_2022_2023\Tri_Tue_Nhan_Tao\CodeDoAn\WebDiabetes\WebDiabetes\obj\Debug\WebDiabetes.csproj.AssemblyReference.cache
