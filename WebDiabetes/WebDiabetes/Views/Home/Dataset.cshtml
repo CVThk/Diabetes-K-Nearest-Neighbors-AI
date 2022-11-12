@@ -7,13 +7,14 @@
 
 <div class="w-75 ms-auto me-auto text-center" style="overflow-x:scroll">
     <div class="w-75 ms-auto me-auto text-center">
-        <div>
-            <div id='countItem' style="width:100%;"></div>
-        </div>
         <div class="d-flex">
+            <div id='countItem' class="w-50"></div>
+            <div id='piePrecision' class="w-50"></div>
+        </div>
+        @*<div class="d-flex">
             <div id='piePrecision' class="w-50"></div>
             <div id='pieRecall' class="w-50"></div>
-        </div>
+        </div>*@
         <script>
             var trace1 = {
                 x: ['Không bị'],
@@ -52,18 +53,18 @@
             var layout = {
                 title: 'Tỉ lệ chính xác của tập dữ liệu'
             };
-            var recall = [{
+            @*var recall = [{
                 values: @ViewBag.Recall,
                 labels: ['Không bỏ sót', 'Bỏ sót'],
                 type: 'pie'
-            }];
+            }];*@
 
             Plotly.newPlot('piePrecision', precision, layout);
 
-            layout = {
-                title: 'Tỉ lệ bỏ sót của tập dữ liệu'
-            };
-            Plotly.newPlot('pieRecall', recall, layout);
+            //layout = {
+            //    title: 'Tỉ lệ bỏ sót của tập dữ liệu'
+            //};
+            //Plotly.newPlot('pieRecall', recall, layout);
         </script>
         
     </div>

@@ -18,7 +18,7 @@ namespace WebDiabetes
         }
         private ConnectionDiabetesDatabase() { }
 
-        string connectionString = @"Data Source = sql.bsite.net\MSSQL2016; Initial Catalog = cvt2405_Diabetes; User ID = cvt2405_Diabetes; Password=cvt123456";
+        string connectionString = @"Data Source = diabetes.mssql.somee.com; Initial Catalog = diabetes; User ID = CVT_2405_SQLLogin_1; Password=cvt123456";
         public List<ClassDiabetes> GetDiabetes()
         {
             List<ClassDiabetes> diabetesList = new List<ClassDiabetes>();

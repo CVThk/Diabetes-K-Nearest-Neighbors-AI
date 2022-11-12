@@ -37,7 +37,7 @@ namespace WebDiabetes.Controllers
             _knn.Fit(_dataDiabetes);
             _knn.Accuracy(out Precision, out Recall);
             ViewBag.Precision = "[" + (Precision * 100).ToString().Replace(",", ".") + "," + (100 - Precision * 100).ToString().Replace(",", ".") + "]";
-            ViewBag.Recall = "[" + (Recall * 100).ToString().Replace(",", ".") + "," + (100 - Recall * 100).ToString().Replace(",", ".") + "]";
+            //ViewBag.Recall = "[" + (Recall * 100).ToString().Replace(",", ".") + "," + (100 - Recall * 100).ToString().Replace(",", ".") + "]";
 
             return View();
         }
