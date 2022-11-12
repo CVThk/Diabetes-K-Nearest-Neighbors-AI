@@ -72,7 +72,8 @@ namespace WebDiabetes.Controllers
             dataTest.Attributes.Add(BMI);
             dataTest.Attributes.Add(DiabetesPedigreeFunction);
             dataTest.Attributes.Add(Age);
-            double val = _knn.Predict(dataTest);
+            double Predict_Proba;
+            double val = _knn.Predict(dataTest, out Predict_Proba);
 
             dataTest.Val = (int)val;
 
@@ -93,6 +94,7 @@ namespace WebDiabetes.Controllers
 
             ViewBag.avgSick = avgSick;
             ViewBag.maxSick = maxSick;
+            ViewBag.Predict_Proba = Predict_Proba;
 
             return View();
         }

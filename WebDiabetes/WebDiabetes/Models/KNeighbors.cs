@@ -107,7 +107,7 @@ namespace WebDiabetes.Models
             return tamp;
         }
 
-        public double Predict(ClassDiabetes dataTest)
+        public double Predict(ClassDiabetes dataTest, out double Predict_Proba)
         {
             Test = Scale_Item(dataTest);
             //Test = dataTest;
@@ -140,8 +140,10 @@ namespace WebDiabetes.Models
                     label_max = Label[i];
                 }
             }
+            Predict_Proba = (label_max == 1) ? (double)max / this.n_neighbors : 1 - (double)max / this.n_neighbors;
             return label_max;
         }
+
 
         public ClassDiabetes Average(int lable)
         {
@@ -201,7 +203,8 @@ namespace WebDiabetes.Models
             TruePositive = TrueNegative = FalseNegative = FalsePositive = 0;
             foreach (var item in DataList)
             {
-                int label_item = (int)Predict(item);
+                double pre;
+                int label_item = (int)Predict(item, out pre);
                 if (item.Val == 1 && label_item == 1)
                     TruePositive++;
                 else if (item.Val == 0 && label_item == 0)
@@ -260,6 +263,7 @@ namespace WebDiabetes.Models
             avgSick += "]";
             maxSick += "]";
         }
+
 
     }
 }

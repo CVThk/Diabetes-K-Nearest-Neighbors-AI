@@ -8,13 +8,14 @@
     string maxSick = ViewBag.maxSick;
     string avgSick = ViewBag.avgSick;
     WebDiabetes.Models.ClassDiabetes dataTest = ViewBag.dataTest;
+    double Predict_Proba = ViewBag.Predict_Proba;
     string val = "Thông tin dữ liệu sau khi chuẩn đoán: ";
     if (dataTest.Val == 0)
     {
         val += "không bị bệnh";
     }
-    else { val += "bị bệnh"; }
-
+    else { val += "bị bệnh với tỉ lệ mắc bệnh là " + Math.Round((Predict_Proba * 100), 2).ToString().Replace(',','.') + @"%"; }
+    
     string testString = ViewBag.Test;
 }
 
