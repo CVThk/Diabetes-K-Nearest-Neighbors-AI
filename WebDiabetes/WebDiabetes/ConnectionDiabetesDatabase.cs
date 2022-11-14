@@ -10,7 +10,6 @@ namespace WebDiabetes
     public class ConnectionDiabetesDatabase
     {
         private static ConnectionDiabetesDatabase instance;
-
         public static ConnectionDiabetesDatabase Instance
         {
             get { if (instance == null) instance = new ConnectionDiabetesDatabase(); return instance; }
